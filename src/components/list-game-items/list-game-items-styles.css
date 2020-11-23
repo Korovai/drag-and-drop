@@ -1,0 +1,69 @@
+.cellOne {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 45px;
+  border: 1px solid #000;
+  background: red;
+}
+
+.cellTwo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 45px;
+  border: 1px solid #000;
+  background: red;
+}
+
+.cellThree {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90px;
+  height: 45px;
+  border: 1px solid #000;
+  background: red;
+}
+
+.cellFoure {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 110px;
+  height: 45px;
+  border: 1px solid #000;
+  background: red;
+}
+
+.cellFive {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width:140px;
+  height: 45px;
+  border: 1px solid #000;
+  background: red;
+}
+
+.cellSix {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 170px;
+  height: 45px;
+  border: 1px solid #000;
+  background: red;
+}
+
+.cellSeven {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 45px;
+  border: 1px solid #000;
+  background: red;
+}
