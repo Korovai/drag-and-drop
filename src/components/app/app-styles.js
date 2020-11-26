@@ -14,6 +14,17 @@ const useStyles = makeStyles(theme => ({
     width: '100%',
     maxWidth: '650px',
     margin: '0 30px'
+  },
+  wrBodyGame: {
+    border: '1px solid #fff',
+    margin: '5px 0',
+    background: '#fff'
+  },
+  playingField: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    padding: '5px'
   }
 }));
 
