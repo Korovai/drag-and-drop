@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 
 // Redux
 import { connect } from 'react-redux';
-import { recordingMixItems } from '../../reducers/index';
+import { recordingMixItems, onRestartGame } from '../../reducers/index';
 
 // Material-UI
 import Box from '@material-ui/core/Box';
@@ -56,6 +56,13 @@ class BodyGame extends Component {
     return res;
   };
 
+  handleRestartGame = () => {
+    const { onRestartGame } = this.props;
+
+    onRestartGame();
+    this.mixItems();
+  };
+
   render() {
     const { classes, arrMixItems } = this.props;
 
@@ -77,6 +84,7 @@ class BodyGame extends Component {
                       type={item.type}
                       load={item.load}
                       index={index}
+                      handleRestartGame={this.handleRestartGame}
                     />
                   );
                 })
@@ -97,7 +105,8 @@ const mapStateToProps = ({ arrMixItems }) => {
 };
 
 const mapDispatchToProps = {
-  recordingMixItems
+  recordingMixItems,
+  onRestartGame
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(BodyGame);

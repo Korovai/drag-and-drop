@@ -3,7 +3,7 @@ import React from 'react';
 
 // React
 import { connect } from 'react-redux';
-import { draggingItems } from '../../reducers/index';
+import { draggingItems, recordingGameResults } from '../../reducers/index';
 
 // Material-UI
 import Box from '@material-ui/core/Box';
@@ -21,7 +21,7 @@ import useStyles from './app-styles';
 
 function App(props) {
   const classes = useStyles();
-  const { settings, arrMixItems } = props;
+  const { settings, arrMixItems, recordingGameResults, message } = props;
 
   const reorder = (list, startIndex, endIndex) => {   
     const result = Array.from(list);
@@ -45,6 +45,23 @@ function App(props) {
     if (source.droppableId === 'droppableElements' && destination.droppableId === 'droppableElements') {
       reorderList = reorder(arrMixItems, source.index, destination.index);
       draggingItems(reorderList);
+      handleEndGameCheck();
+    }
+  };
+
+  const handleEndGameCheck = () => {
+    let p = 0;
+
+    for (let i=0; i<arrMixItems.length - 1; i++) {
+      if (arrMixItems[i].load < arrMixItems[i+1].load) {
+        p++;
+      }
+    }
+
+    if (p === arrMixItems.length - 1) {
+      const message = 'Game over! To restart the game, click on the chips.';
+
+      recordingGameResults(message);
     }
   };
   
@@ -55,21 +72,23 @@ function App(props) {
         <DragDropContext onDragEnd={onDragEnd}>
           <BodyGame classes={classes} settings={settings} />
         </DragDropContext>
-        <FooterGame />
+        <FooterGame message={message} />
       </Box>
     </Box>   
   );
 };
 
-const mapStateToProps = ({ settings, arrMixItems }) => {
+const mapStateToProps = ({ settings, arrMixItems, message }) => {
   return {
     settings,
-    arrMixItems
+    arrMixItems,
+    message
   };
 };
 
 const mapDispatchToProps = {
-  draggingItems
+  draggingItems,
+  recordingGameResults
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

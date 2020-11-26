@@ -25,13 +25,14 @@ class ListGameItems extends Component {
   });
 
   render() {
-    const { id, type, load, index } = this.props;
+    const { id, type, load, index, handleRestartGame } = this.props;
 
     return (
       <>
         <Draggable draggableId={`${id}`} index={index}>
           {(provided, snapshot) => (
             <Box
+              onClick={handleRestartGame}
               className={clsx('gameElement', `${type}`)}
               ref={provided.innerRef}
               {...provided.draggableProps}
