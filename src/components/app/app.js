@@ -3,7 +3,7 @@ import React from 'react';
 
 // React
 import { connect } from 'react-redux';
-import { onReorderElements } from '../../reducers/index';
+import { draggingItems } from '../../reducers/index';
 
 // Material-UI
 import Box from '@material-ui/core/Box';
@@ -21,7 +21,7 @@ import useStyles from './app-styles';
 
 function App(props) {
   const classes = useStyles();
-  const { settings } = props;
+  const { settings, arrMixItems } = props;
 
   const reorder = (list, startIndex, endIndex) => {   
     const result = Array.from(list);
@@ -34,7 +34,7 @@ function App(props) {
   };
 
   const onDragEnd = (result) => {
-    const { onReorderElements } = props;
+    const { draggingItems } = props;
     const { source, destination } = result;
     let reorderList = null;
 
@@ -43,8 +43,8 @@ function App(props) {
 
     // Sorting folders
     if (source.droppableId === 'droppableElements' && destination.droppableId === 'droppableElements') {
-      reorderList = reorder(settings, source.index, destination.index);
-      onReorderElements(reorderList);
+      reorderList = reorder(arrMixItems, source.index, destination.index);
+      draggingItems(reorderList);
     }
   };
   
@@ -61,14 +61,15 @@ function App(props) {
   );
 };
 
-const mapStateToProps = ({ settings }) => {
+const mapStateToProps = ({ settings, arrMixItems }) => {
   return {
-    settings
+    settings,
+    arrMixItems
   };
 };
 
 const mapDispatchToProps = {
-  onReorderElements
+  draggingItems
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

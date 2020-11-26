@@ -36,17 +36,24 @@ const initialState = {
       type: 'cellSeven'
     }
   ],
+  arrMixItems: [],
   points: 0
 };
 
-const REORDER_ELEMENTS = 'REORDER_ELEMENTS';
+const DRAGGING_ITEMS = 'DRAGGING_ITEMS';
+const RECORDING_MIX_ITEMS = 'RECORDING_MIX_ITEMS';
 
 const reducer = (state = initialState, action) => {
   switch(action.type) {
-    case REORDER_ELEMENTS:
+    case DRAGGING_ITEMS:
       return {
         ...state,
-        settings: action.list
+        arrMixItems: action.list
+      };
+    case RECORDING_MIX_ITEMS:
+      return {
+        ...state,
+        arrMixItems: action.list
       };
     default:
       return state;
@@ -55,14 +62,22 @@ const reducer = (state = initialState, action) => {
 
 export default reducer;
 
-const onReorderElements = (list) => {
+const draggingItems = (list) => {
   return {
-    type: 'REORDER_ELEMENTS',
+    type: 'DRAGGING_ITEMS',
+    list
+  };
+};
+
+const recordingMixItems = (list) => {
+  return {
+    type: 'RECORDING_MIX_ITEMS',
     list
   };
 };
 
 export {
-  onReorderElements
+  draggingItems,
+  recordingMixItems
 };
   
