@@ -1,5 +1,5 @@
 // Base
-import React from 'react';
+import React, { Component } from 'react';
 
 // React
 import { connect } from 'react-redux';
@@ -7,6 +7,7 @@ import { draggingItems, recordingGameResults } from '../../reducers/index';
 
 // Material-UI
 import Box from '@material-ui/core/Box';
+import { withStyles } from "@material-ui/core/styles";
 
 // Beautiful DND
 import { DragDropContext } from "react-beautiful-dnd";
@@ -17,13 +18,42 @@ import BodyGame from '../body-game/body-game';
 import FooterGame from '../footer/footer-game';
 
 // Styles
-import useStyles from './app-styles';
+const styles = (theme) => ({
+  wrApp: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: '100vh'
+  },
+  playWindow: {
+    display: 'flex',
+    flexDirection: 'column',
+    width: '100%',
+    maxWidth: '650px',
+    margin: '0 30px'
+  },
+  wrBodyGame: {
+    border: '1px solid #fff',
+    margin: '5px 0',
+    background: '#fff'
+  },
+  playingField: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    padding: '5px'
+  }
+});
 
-function App(props) {
-  const classes = useStyles();
-  const { settings, arrMixItems, recordingGameResults, message } = props;
+class App extends Component {
 
-  const reorder = (list, startIndex, endIndex) => {   
+  componentDidUpdate(prevProps) {
+    if (this.props !== prevProps) {
+      this.handleEndGameCheck();
+    };
+  };
+
+  reorder = (list, startIndex, endIndex) => {   
     const result = Array.from(list);
     // Remove one element this startIndex
     const [removed] = result.splice(startIndex, 1);
@@ -33,8 +63,8 @@ function App(props) {
     return result;
   };
 
-  const onDragEnd = (result) => {
-    const { draggingItems } = props;
+  onDragEnd = (result) => {
+    const { arrMixItems, draggingItems } = this.props;
     const { source, destination } = result;
     let reorderList = null;
 
@@ -43,13 +73,13 @@ function App(props) {
 
     // Sorting folders
     if (source.droppableId === 'droppableElements' && destination.droppableId === 'droppableElements') {
-      reorderList = reorder(arrMixItems, source.index, destination.index);
+      reorderList = this.reorder(arrMixItems, source.index, destination.index);
       draggingItems(reorderList);
-      handleEndGameCheck();
     }
   };
 
-  const handleEndGameCheck = () => {
+  handleEndGameCheck = () => {
+    const { arrMixItems, recordingGameResults } = this.props;
     let p = 0;
 
     for (let i=0; i<arrMixItems.length - 1; i++) {
@@ -64,18 +94,22 @@ function App(props) {
       recordingGameResults(message);
     }
   };
-  
-  return (
-    <Box className={classes.wrApp}>
-      <Box className={classes.playWindow}>
-        <HeaderGame />
-        <DragDropContext onDragEnd={onDragEnd}>
-          <BodyGame classes={classes} settings={settings} />
-        </DragDropContext>
-        <FooterGame message={message} />
-      </Box>
-    </Box>   
-  );
+
+  render() {
+    const { classes, settings, message } = this.props;
+
+    return (
+      <Box className={classes.wrApp}>
+        <Box className={classes.playWindow}>
+          <HeaderGame />
+          <DragDropContext onDragEnd={this.onDragEnd}>
+            <BodyGame classes={classes} settings={settings} />
+          </DragDropContext>
+          <FooterGame message={message} />
+        </Box>
+      </Box>   
+    );
+  };
 };
 
 const mapStateToProps = ({ settings, arrMixItems, message }) => {
@@ -91,4 +125,4 @@ const mapDispatchToProps = {
   recordingGameResults
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(App));

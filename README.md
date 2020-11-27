@@ -129,7 +129,46 @@ class ListGameItems extends Component {
 
 - Организовать произвольное перемешивания фишек (генератор случайных неповторяющихся чисел).
 
-- Реализовать логику окончания и рестарта игры. 
+- Реализовать логику окончания и рестарта игры.
+
+- Исправить баг завершения игры.
+
+После перетаскивания игровых фишек в нужную последовательность игра не завершается. Проблема была связана с логикой отвечающей за конец игры, которая срабатывала после рендера. А потому баллы набранные игроком использовались с предпоследнего drag-and-drop'а, а не с последнего!
+
+Неправильная реализация:
+
+`start onDragEnd()` > `Game Completion Logic handleEndGameCheck()` > `action draggingItems(reorderList)`
+
+Правильная реализация:
+
+`start onDragEnd()` > `action draggingItems(reorderList)` > `Game Completion Logic handleEndGameCheck()`
+
+Решение — применить метод `componentDidUpdate()` (срабатывает после рендера) для проверки изменений пропсов. Если пропсы меняются выполнить логику завершения игры. Компонент `function App(props) {...}` организовать в компонент класса. Вызов хука `useStyles()` для использования в классовом компоненте заменить на `withTheme HOC`.
+
+```js
+/*...*/
+import { withStyles } from "@material-ui/core/styles"; // Material-UI
+// Styles
+const styles = (theme) => ({
+  /*...*/
+});
+
+class App extends Component {
+  /*...*/
+  render() {
+    const { classes } = this.props;
+    return (
+      <>
+        /*...*/
+      </>
+    );
+  };
+};
+/*...*/
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(App));
+```
+
+*Fix #1.*
 
 **Остальные этапы создания приложения будут добавляться по мере развития проекта*.
 
