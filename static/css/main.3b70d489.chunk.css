@@ -1,0 +1,2 @@
+.gameElement{display:flex;justify-content:center;align-items:center;height:45px;border:1px solid #000;background:red;color:#fff}.cellOne{width:30px}.cellTwo{width:60px}.cellThree{width:90px}.cellFoure{width:110px}.cellFive{width:140px}.cellSix{width:170px}.cellSeven{width:200px}body{height:100vh;margin:0;background:#29f49a;background:linear-gradient(180deg,#29f49a,#0fbdd9);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#29f49a",endColorstr="#0fbdd9",GradientType=1)}
+/*# sourceMappingURL=main.3b70d489.chunk.css.map */
