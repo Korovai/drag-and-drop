@@ -170,6 +170,8 @@ export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(A
 
 *Fix #1.*
 
+- Развернуть React Applications to Github Pages.
+
 **Остальные этапы создания приложения будут добавляться по мере развития проекта*.
 
 ## Скетч проекта
