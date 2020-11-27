@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/Korovai/drag-and-drop/static/css/main.3b70d489.chunk.css",
-    "main.js": "/Korovai/drag-and-drop/static/js/main.28ed0341.chunk.js",
-    "main.js.map": "/Korovai/drag-and-drop/static/js/main.28ed0341.chunk.js.map",
-    "runtime-main.js": "/Korovai/drag-and-drop/static/js/runtime-main.ad3f92cc.js",
-    "runtime-main.js.map": "/Korovai/drag-and-drop/static/js/runtime-main.ad3f92cc.js.map",
-    "static/js/2.3aed1d08.chunk.js": "/Korovai/drag-and-drop/static/js/2.3aed1d08.chunk.js",
-    "static/js/2.3aed1d08.chunk.js.map": "/Korovai/drag-and-drop/static/js/2.3aed1d08.chunk.js.map",
-    "index.html": "/Korovai/drag-and-drop/index.html",
-    "static/css/main.3b70d489.chunk.css.map": "/Korovai/drag-and-drop/static/css/main.3b70d489.chunk.css.map",
-    "static/js/2.3aed1d08.chunk.js.LICENSE.txt": "/Korovai/drag-and-drop/static/js/2.3aed1d08.chunk.js.LICENSE.txt"
+    "main.css": "/drag-and-drop/static/css/main.3b70d489.chunk.css",
+    "main.js": "/drag-and-drop/static/js/main.28ed0341.chunk.js",
+    "main.js.map": "/drag-and-drop/static/js/main.28ed0341.chunk.js.map",
+    "runtime-main.js": "/drag-and-drop/static/js/runtime-main.aaf185f2.js",
+    "runtime-main.js.map": "/drag-and-drop/static/js/runtime-main.aaf185f2.js.map",
+    "static/js/2.3aed1d08.chunk.js": "/drag-and-drop/static/js/2.3aed1d08.chunk.js",
+    "static/js/2.3aed1d08.chunk.js.map": "/drag-and-drop/static/js/2.3aed1d08.chunk.js.map",
+    "index.html": "/drag-and-drop/index.html",
+    "static/css/main.3b70d489.chunk.css.map": "/drag-and-drop/static/css/main.3b70d489.chunk.css.map",
+    "static/js/2.3aed1d08.chunk.js.LICENSE.txt": "/drag-and-drop/static/js/2.3aed1d08.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.ad3f92cc.js",
+    "static/js/runtime-main.aaf185f2.js",
     "static/js/2.3aed1d08.chunk.js",
     "static/css/main.3b70d489.chunk.css",
     "static/js/main.28ed0341.chunk.js"
