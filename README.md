@@ -172,6 +172,10 @@ export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(A
 
 - Развернуть React Applications to Github Pages.
 
+- Валидация данных Prop-types.
+
+`npm install --save prop-types`
+
 **Остальные этапы создания приложения будут добавляться по мере развития проекта*.
 
 ## Скетч проекта

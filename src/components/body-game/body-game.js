@@ -1,5 +1,6 @@
 // Base
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 // Redux
 import { connect } from 'react-redux';
@@ -15,6 +16,13 @@ import { Droppable } from "react-beautiful-dnd";
 import ListGameItems from '../list-game-items/list-game-items';
 
 class BodyGame extends Component {
+
+  static propTypes = {
+    arrMixItems: PropTypes.array,
+    settings: PropTypes.array,
+    recordingMixItems: PropTypes.func,
+    onRestartGame: PropTypes.func
+  };
 
   componentDidMount() {
     this.mixItems();

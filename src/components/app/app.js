@@ -1,5 +1,6 @@
 // Base
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 // React
 import { connect } from 'react-redux';
@@ -46,6 +47,17 @@ const styles = (theme) => ({
 });
 
 class App extends Component {
+
+  static propTypes = {
+    settings: PropTypes.array,
+    message: PropTypes.string,
+    list: PropTypes.array,
+    startIndex: PropTypes.number,
+    endIndex: PropTypes.number,
+    arrMixItems: PropTypes.array,
+    draggingItems: PropTypes.func,
+    recordingGameResults: PropTypes.func
+  };
 
   componentDidUpdate(prevProps) {
     if (this.props !== prevProps) {

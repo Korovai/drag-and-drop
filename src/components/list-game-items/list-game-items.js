@@ -1,6 +1,7 @@
 // Base
 import React, { Component } from 'react';
 import clsx from 'clsx';
+import PropTypes from 'prop-types';
 
 // Material-UI
 import Box from '@material-ui/core/Box';
@@ -12,6 +13,14 @@ import { Draggable } from "react-beautiful-dnd";
 import './list-game-items-styles.css';
 
 class ListGameItems extends Component {
+
+  static propTypes = {
+    id: PropTypes.number,
+    type: PropTypes.string,
+    load: PropTypes.number,
+    index: PropTypes.number,
+    handleRestartGame: PropTypes.func
+  };
   
   getItemStyle = (isDragging, draggableStyle) => ({
     // Some basic styles to make the items look a bit nicer

@@ -1,5 +1,6 @@
 // Base
 import React from 'react';
+import PropTypes from 'prop-types';
 
 // Material-UI
 import Box from '@material-ui/core/Box';
@@ -16,5 +17,9 @@ const FooterGame = ({ message }) => {
     </Box>
   );
 };
+
+FooterGame.propTypes = {
+  message: PropTypes.string,
+}
 
 export default FooterGame;
